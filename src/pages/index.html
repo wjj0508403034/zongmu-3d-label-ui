@@ -1,0 +1,26 @@
+<html ng-app="zongmu-3d-label" ng-controller="appController">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="../res/favicon.ico" type="image/x-icon" />
+  <!-- inject:css -->
+  <!-- endinject -->
+  <title>标注系统</title>
+</head>
+
+<body class="huoyun hold-transition skin-blue sidebar-mini" ng-controller="indexController">
+  <p>Hello World</p>
+  <div class="wrapper">
+    <div widget-header></div>
+    <div widget-sidebar></div>
+    <div class="content-wrapper">
+      <section widget-bread-crumb title="{{pageTitle}}" navs="navs"></section>
+      <section ui-view class="content-wrapper-container">
+      </section>
+    </div>
+</body>
+<!-- inject:js -->
+<!-- endinject -->
+
+</html>

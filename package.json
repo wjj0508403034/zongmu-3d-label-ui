@@ -1,0 +1,43 @@
+{
+  "name": "zongmu-3d-label-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wjj0508403034/zongmu-3d-label-ui.git"
+  },
+  "author": "wjj0508403034@126.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wjj0508403034/zongmu-3d-label-ui/issues"
+  },
+  "homepage": "https://github.com/wjj0508403034/zongmu-3d-label-ui#readme",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.6",
+    "admin-lte": "^2.3.11",
+    "angular": "^1.6.6",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "bootstrap": "^3.3.7",
+    "del": "^3.0.0",
+    "event-stream": "^3.3.4",
+    "font-awesome": "^4.7.0",
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^2.0.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-bom": "^1.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-inject": "^4.2.0",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-show-me-file": "0.0.2",
+    "huoyun-widgets": "^1.0.2",
+    "jquery": "^3.2.1",
+    "merge-stream": "^1.0.1"
+  }
+}
