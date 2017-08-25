@@ -2,6 +2,8 @@
 
 angular.module('zongmu-3d-label', ["huoyun.widget", "ui.router"]);
 
+angular.module('zongmu-3d-label').constant("ServiceContext", "");
+
 angular.module('zongmu-3d-label').config(["displayProvider", function(displayProvider) {
   displayProvider.config({
     date: "yyyy/MM/dd",
