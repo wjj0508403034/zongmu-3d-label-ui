@@ -1,0 +1,9 @@
+<div class="head-right-template pull-right" ng-controller="headRightTemplateController">
+  <div ng-if="!isLogin()">
+    <div class="btn btn-primary marign-right-10" ng-click="onLoginButtonClicked()">登录</div>
+    <div class="btn btn-default" ng-click="onRegisterButtonClicked()">注册</div>
+  </div>
+  <div ng-if="isLogin()">
+    <div class="btn btn-default" ng-click="onLogoutButtonClicked()">登出</div>
+  </div>
+</div>

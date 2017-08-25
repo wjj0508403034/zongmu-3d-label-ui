@@ -9,16 +9,11 @@
   <title>标注系统</title>
 </head>
 
-<body class="huoyun hold-transition skin-blue sidebar-mini" ng-controller="indexController">
-  <p>Hello World</p>
-  <div class="wrapper">
-    <div widget-header></div>
-    <div widget-sidebar></div>
-    <div class="content-wrapper">
-      <section widget-bread-crumb title="{{pageTitle}}" navs="navs"></section>
-      <section ui-view class="content-wrapper-container">
-      </section>
-    </div>
+<body class="huoyun hold-transition skin-blue">
+  <div widgets-head options="headOptions"></div>
+  <div widgets-nav options="navOptions"></div>
+  <section ui-view class="content-wrapper-container">
+  </section>
 </body>
 <!-- inject:js -->
 <!-- endinject -->

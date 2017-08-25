@@ -37,7 +37,7 @@ let config = {
     },
     "angular": {
       "js": [{
-        "src": "./node_modules/angular/angular.min.js",
+        "src": "./node_modules/angular/angular.js",
         "target": "/libs/angular/"
       }]
     },
@@ -45,6 +45,16 @@ let config = {
       "js": [{
         "src": "./node_modules/@uirouter/angularjs/release/angular-ui-router.min.js",
         "target": "/libs/angular-ui-router/"
+      }]
+    },
+    "ng-dialog": {
+      "css": [{
+        "src": "./node_modules/ng-dialog/css/ngDialog-theme-default.min.css",
+        "target": "/libs/ng-dialog/"
+      }],
+      "js": [{
+        "src": "./node_modules/ng-dialog/js/ngDialog.min.js",
+        "target": "/libs/ng-dialog/"
       }]
     },
     "font-awesome": {

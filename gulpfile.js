@@ -99,7 +99,7 @@ gulp.task("inject-pages", ["clean", "build-css", "build-js"], function() {
   });
 
   js.push(`${project.Config.destPath}/${project.Config.name}/**/*.js`);
-  js.push(`${project.Config.destPath}/${project.Config.name}/**/*.css`);
+  css.push(`${project.Config.destPath}/${project.Config.name}/**/*.css`);
 
   var injectCss = gulp.src(css, {
     read: false
