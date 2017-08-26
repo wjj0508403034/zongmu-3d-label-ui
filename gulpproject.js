@@ -49,6 +49,9 @@ let config = {
     },
     "ng-dialog": {
       "css": [{
+        "src": "./node_modules/ng-dialog/css/ngDialog.min.css",
+        "target": "/libs/ng-dialog/"
+      }, {
         "src": "./node_modules/ng-dialog/css/ngDialog-theme-default.min.css",
         "target": "/libs/ng-dialog/"
       }],

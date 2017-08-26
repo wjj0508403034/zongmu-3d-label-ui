@@ -5,7 +5,7 @@ angular.module('zongmu-3d-label').controller("videoAttrCreateController", ["$sco
     $scope.ngDialogData.onConfirmButtonClicked = function() {
       Services.VideoAttrService.createAttr($scope.value)
         .then(function() {
-          $scope.closeThisDialog(['OK']);
+          $scope.confirmClose();
         });
     };
   }

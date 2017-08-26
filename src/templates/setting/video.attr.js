@@ -1,18 +1,38 @@
 'use strict';
 
-angular.module('zongmu-3d-label').controller("videoAttrController", ["$scope", "Services", "Dialog", "Tip",
-  function($scope, Services, Dialog, Tip) {
+angular.module('zongmu-3d-label').controller("videoAttrController", ["$scope", "Services", "HuoYunWidgets",
+  function($scope, Services, HuoYunWidgets) {
 
 
-    $scope.tableOptions = {
+    $scope.tableOption = new HuoYunWidgets.TableOption({
       title: "视频属性",
       selectionMode: "single",
       buttons: [{
         name: "add",
         label: "新建",
-        appendClass: "btn-primary",
+        appendClass: "btn-default",
         onClick: function() {
           OpenAttrCreateDialog();
+        }
+      }, {
+        name: "delete",
+        label: "删除",
+        appendClass: "btn-default",
+        onClick: function() {
+          DeleteAttr();
+        },
+        disabled: function() {
+          return !$scope.tableOption.getSelectedItem();
+        }
+      }, {
+        name: "view",
+        label: "查看",
+        appendClass: "btn-default",
+        onClick: function() {
+          OpenAttrCreateDialog();
+        },
+        disabled: function() {
+          return !$scope.tableOption.getSelectedItem();
         }
       }],
       columns: [{
@@ -20,29 +40,39 @@ angular.module('zongmu-3d-label').controller("videoAttrController", ["$scope", "
         label: "属性名称",
         type: "string"
       }]
-    };
+    });
 
     RefreshTable();
 
     function RefreshTable() {
       Services.VideoAttrService.getAttrs()
         .then(function(dataSource) {
-          $scope.dataSource = dataSource;
+          $scope.tableOption.setSource(dataSource);
         });
+    }
+
+    function DeleteAttr() {
+      var attr = $scope.tableOption.getSelectedItem();
+      if (attr) {
+        Services.VideoAttrService.deleteAttr(attr.id)
+          .then(function() {
+            HuoYunWidgets.Tip.show("删除成功！");
+            RefreshTable();
+          });
+      }
     }
 
     function OpenAttrCreateDialog() {
       var options = {
         title: `新建视频属性`,
-        templateUrl: "setting/attr/video.attr.create.dialog.html",
-        closeCallback: function(key, data) {
-          if (key === "OK") {
-            Tip.show("创建视频属性成功！");
-            RefreshTable();
-          }
-        }
+        templateUrl: "setting/attr/video.attr.create.dialog.html"
       };
-      var dialog = Dialog.showConfirm(options);
+
+      HuoYunWidgets.Dialog.showConfirm(options)
+        .then(function() {
+          HuoYunWidgets.Tip.show("创建视频属性成功！");
+          RefreshTable();
+        });
     }
   }
 ]);

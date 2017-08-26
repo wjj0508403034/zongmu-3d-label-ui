@@ -1,0 +1,19 @@
+.widgets-table {
+  border: 1px solid #3c8dbc;
+}
+
+.widgets-table .box-header {
+  height: 60px;
+  line-height: 60px;
+  padding: 25px 10px;
+  background: #3c8dbc;
+}
+
+.widgets-table .box-header .box-title {
+  color: white;
+}
+
+.widgets-table .box-header .box-tools {
+  top: 15px;
+  height: 30px;
+}

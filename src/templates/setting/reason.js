@@ -2,7 +2,7 @@
 
 
 angular.module('zongmu-3d-label').controller("reasonSettingController", ["$scope", "Services",
-  function($scope) {
+  function($scope, Services) {
 
     $scope.tableOptions = {
       title: "原因",

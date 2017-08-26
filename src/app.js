@@ -11,6 +11,14 @@ angular.module('zongmu-3d-label').config(["displayProvider", function(displayPro
   });
 }]);
 
+angular.module('zongmu-3d-label').config(function($httpProvider) {
+  $httpProvider.interceptors.push("HttpInterceptor");
+});
+
+angular.module('zongmu-3d-label').config(['$qProvider', function($qProvider) {
+  //$qProvider.errorOnUnhandledRejections(false);
+}]);
+
 angular.module('zongmu-3d-label').config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.when("/", ["$state", function($state) {
     $state.go("home");
@@ -66,9 +74,9 @@ angular.module('zongmu-3d-label').config(function($stateProvider, $urlRouterProv
     });
 });
 
-angular.module('zongmu-3d-label').controller("appController", ["$scope", "permission", "$state",
-  function($scope, permissionProvider, $state) {
-
+angular.module('zongmu-3d-label').controller("appController", ["$scope", "permission", "$state", "httpInterceptor", "HuoYunWidgets",
+  function($scope, permissionProvider, $state, httpInterceptorProvider, HuoYunWidgets) {
+    httpInterceptorProvider.setDialog(HuoYunWidgets.Dialog);
     permissionProvider.setUser({
       businessRole: "Manager"
     });
