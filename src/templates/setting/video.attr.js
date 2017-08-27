@@ -3,6 +3,7 @@
 angular.module('zongmu-3d-label').controller("videoAttrController", ["$scope", "Services", "HuoYunWidgets",
   function($scope, Services, HuoYunWidgets) {
 
+    $scope.sideBarOptions.setGroupItemSelected("video-setting", "setting.videoattr");
 
     $scope.tableOption = new HuoYunWidgets.TableOption({
       title: "视频属性",

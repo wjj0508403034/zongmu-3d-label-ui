@@ -89,14 +89,16 @@ angular.module('zongmu-3d-label').controller("appController", ["$scope", "permis
       rightTemplateUrl: "head/right.template.html"
     };
 
-    $scope.navOptions = {
+    $scope.navOption = new HuoYunWidgets.NavOption({
       items: [{
         label: "任务大厅",
+        name: "index",
         onClick: function() {
           $state.go("home");
         }
       }, {
         label: "个人中心",
+        name: "personal-center",
         visibility: function() {
           return permissionProvider.isLogin();
         },
@@ -105,6 +107,7 @@ angular.module('zongmu-3d-label').controller("appController", ["$scope", "permis
         }
       }, {
         label: "系统设置",
+        name: "setting",
         visibility: function() {
           return permissionProvider.visibilityInRoles(["Manager"]);
         },
@@ -113,10 +116,11 @@ angular.module('zongmu-3d-label').controller("appController", ["$scope", "permis
         }
       }, {
         label: "帮助",
+        name: "help",
         onClick: function() {
           $state.go("help");
         }
       }]
-    };
+    });
   }
 ]);

@@ -6,7 +6,7 @@ angular.module('zongmu-3d-label').controller("reasonCreateController", ["$scope"
     $scope.ngDialogData.onConfirmButtonClicked = function() {
       Services.ReasonService.createReason($scope.value)
         .then(function() {
-          $scope.closeThisDialog(['OK']);
+          $scope.confirmClose();
         });
     };
   }

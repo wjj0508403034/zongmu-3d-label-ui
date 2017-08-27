@@ -1,18 +1,30 @@
 'use strict';
 
 
-angular.module('zongmu-3d-label').controller("reasonSettingController", ["$scope", "Services",
-  function($scope, Services) {
+angular.module('zongmu-3d-label').controller("reasonSettingController", ["$scope", "Services", "HuoYunWidgets",
+  function($scope, Services, HuoYunWidgets) {
 
-    $scope.tableOptions = {
+    $scope.sideBarOptions.setGroupItemSelected("review-setting", "setting.reason");
+
+    $scope.tableOption = new HuoYunWidgets.TableOption({
       title: "原因",
       selectionMode: "single",
       buttons: [{
         name: "add",
         label: "新建",
-        appendClass: "btn-primary",
+        appendClass: "btn-default",
         onClick: function() {
-          OpenAttrCreateDialog();
+          OpenReasonCreateDialog();
+        }
+      }, {
+        name: "delete",
+        label: "删除",
+        appendClass: "btn-default",
+        onClick: function() {
+          DeleteReason();
+        },
+        disabled: function() {
+          return !$scope.tableOption.getSelectedItem();
         }
       }],
       columns: [{
@@ -20,29 +32,39 @@ angular.module('zongmu-3d-label').controller("reasonSettingController", ["$scope
         label: "名称",
         type: "string"
       }]
-    };
+    });
 
     RefreshTable();
 
     function RefreshTable() {
       Services.ReasonService.getReasons()
         .then(function(dataSource) {
-          $scope.dataSource = dataSource;
+          $scope.tableOption.setSource(dataSource);
         });
     }
 
-    function OpenAttrCreateDialog() {
+    function OpenReasonCreateDialog() {
       var options = {
         title: `新建原因`,
         templateUrl: "setting/reason/reason.create.dialog.html",
-        closeCallback: function(key, data) {
-          if (key === "OK") {
-            Tip.show("创建原因成功！");
-            RefreshTable();
-          }
-        }
       };
-      var dialog = Dialog.showConfirm(options);
+
+      HuoYunWidgets.Dialog.showConfirm(options)
+        .then(function() {
+          HuoYunWidgets.Tip.show("创建原因成功！");
+          RefreshTable();
+        });
+    }
+
+    function DeleteReason() {
+      var reason = $scope.tableOption.getSelectedItem();
+      if (reason) {
+        Services.ReasonService.deleteReason(reason.id)
+          .then(function() {
+            HuoYunWidgets.Tip.show("删除成功");
+            RefreshTable();
+          });
+      }
     }
   }
 ]);
