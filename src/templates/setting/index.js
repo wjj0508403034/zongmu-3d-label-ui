@@ -6,6 +6,14 @@ angular.module('zongmu-3d-label').controller("settingIndexController", ["$scope"
 
     $scope.navOption.setSelected("setting");
 
+    $scope.setBreadCrumb = function(option) {
+      $scope.breadCrumbOption = new HuoYunWidgets.BreadCrumbOption(option);
+    };
+
+    $scope.setGroupItemSelected = function(groupName, groupItemName) {
+      $scope.sideBarOptions.setGroupItemSelected(groupName, groupItemName);
+    };
+
     $scope.sideBarOptions = new HuoYunWidgets.SidebarOption({
       groups: [{
         label: "视频设置",

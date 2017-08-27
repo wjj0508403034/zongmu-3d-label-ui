@@ -58,7 +58,7 @@ angular.module('zongmu-3d-label').config(function($stateProvider, $urlRouterProv
       controller: 'compressionRatioController'
     })
     .state("setting.videoattr", {
-      url: "/videoattr",
+      url: "/video-attr",
       templateUrl: "setting/video.attr.html",
       controller: 'videoAttrController'
     })
@@ -71,7 +71,13 @@ angular.module('zongmu-3d-label').config(function($stateProvider, $urlRouterProv
       url: "/reason",
       templateUrl: "setting/reason.html",
       controller: 'reasonSettingController'
+    })
+    .state("setting.video-attr-detail", {
+      url: "/video-attr/:attrId/detail",
+      templateUrl: "setting/attr/video.attr.detail.html",
+      controller: 'videoAttrDetailController'
     });
+
 });
 
 angular.module('zongmu-3d-label').controller("appController", ["$scope", "permission", "$state", "httpInterceptor", "HuoYunWidgets",

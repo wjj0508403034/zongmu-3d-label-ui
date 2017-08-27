@@ -1,9 +1,24 @@
 'use strict';
 
-angular.module('zongmu-3d-label').controller("videoAttrController", ["$scope", "Services", "HuoYunWidgets",
-  function($scope, Services, HuoYunWidgets) {
+angular.module('zongmu-3d-label').controller("videoAttrController", ["$scope", "Services", "HuoYunWidgets", "$state",
+  function($scope, Services, HuoYunWidgets, $state) {
 
-    $scope.sideBarOptions.setGroupItemSelected("video-setting", "setting.videoattr");
+    $scope.setGroupItemSelected("video-setting", "setting.videoattr");
+
+    $scope.setBreadCrumb({
+      items: [{
+        name: "setting",
+        label: "视频设置",
+        icon: "fa-file-video-o",
+        onClick: function(group, groupItem) {
+          $state.go("setting.ratio");
+        }
+      }, {
+        name: "setting",
+        icon: "fa-tags",
+        label: "视频属性"
+      }]
+    });
 
     $scope.tableOption = new HuoYunWidgets.TableOption({
       title: "视频属性",
@@ -30,7 +45,12 @@ angular.module('zongmu-3d-label').controller("videoAttrController", ["$scope", "
         label: "查看",
         appendClass: "btn-default",
         onClick: function() {
-          OpenAttrCreateDialog();
+          var attr = $scope.tableOption.getSelectedItem();
+          if (attr) {
+            $state.go("setting.video-attr-detail", {
+              attrId: attr.id
+            });
+          }
         },
         disabled: function() {
           return !$scope.tableOption.getSelectedItem();
