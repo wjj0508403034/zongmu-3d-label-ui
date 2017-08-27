@@ -8,6 +8,13 @@ angular.module('zongmu-3d-label').factory("LoginService", ["$http", "ServiceCont
           email: email,
           password: password
         }));
+      },
+      register: function(email, password, repeatPassword) {
+        return new ServiceProxy($http.post(`${baseUrl}/register`, {
+          email: email,
+          password: password,
+          repeatPassword: repeatPassword
+        }));
       }
     };
   }

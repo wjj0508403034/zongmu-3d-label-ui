@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('zongmu-3d-label').controller("RegisterController", ["$scope", "FormData", "Services", "Validators",
-  function($scope, FormData, Services, Validators) {
+angular.module('zongmu-3d-label').controller("RegisterController", ["$scope", "FormData", "Services", "Validators", "HuoYunWidgets",
+  function($scope, FormData, Services, Validators, HuoYunWidgets) {
 
     $scope.vm = new FormData("email", "password", "repeatPassword");
     $scope.vm.addValidator("email", Validators.Mandatory, "邮箱不能为空。");
@@ -28,7 +28,8 @@ angular.module('zongmu-3d-label').controller("RegisterController", ["$scope", "F
       var model = $scope.vm.getModel();
       Services.LoginService.register(model.email, model.password, model.repeatPassword)
         .then(function() {
-          window.location.href = "/index.html";
+          HuoYunWidgets.Tip.show("注册成功！");
+          window.location.href = "/login.html";
         }).catch(function(err) {
           $scope.vm.clearErrors();
           $scope.vm.setError("email", err.message);

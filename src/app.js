@@ -19,6 +19,26 @@ angular.module('zongmu-3d-label').config(['$qProvider', function($qProvider) {
   //$qProvider.errorOnUnhandledRejections(false);
 }]);
 
+
+angular.module('zongmu-3d-label').run(function($rootScope) {
+
+  $rootScope.$on('$stateChangeStart', function(event, toState) {
+    console.log(arguments);
+  });
+
+  $rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams) {
+    console.log(arguments);
+  });
+
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+    console.log(arguments);
+  });
+
+  $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+    console.log(arguments);
+  });
+});
+
 angular.module('zongmu-3d-label').config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.when("/", ["$state", function($state) {
     $state.go("home");
@@ -84,9 +104,9 @@ angular.module('zongmu-3d-label').config(function($stateProvider, $urlRouterProv
 angular.module('zongmu-3d-label').controller("appController", ["$scope", "permission", "$state", "httpInterceptor", "HuoYunWidgets",
   function($scope, permissionProvider, $state, httpInterceptorProvider, HuoYunWidgets) {
     httpInterceptorProvider.setDialog(HuoYunWidgets.Dialog);
-    permissionProvider.setUser({
-      businessRole: "Manager"
-    });
+    // permissionProvider.setUser({
+    //   businessRole: "Manager"
+    // });
 
     $scope.headOptions = {
       title: "3d标注系统",
