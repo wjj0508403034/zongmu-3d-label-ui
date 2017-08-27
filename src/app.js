@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('zongmu-3d-label', ["huoyun.widget", "ui.router"]);
+angular.module('zongmu-3d-label', ["huoyun.widget", "huoyun.formdata", "ui.router"]);
 
 angular.module('zongmu-3d-label').constant("ServiceContext", "");
 
@@ -25,6 +25,7 @@ angular.module('zongmu-3d-label').config(function($stateProvider, $urlRouterProv
   }]);
 
   $urlRouterProvider.otherwise(function($injector, $location) {
+    console.warn($location)
     console.warn(`URL not found, URL: ${$location.$$absUrl}, Path: ${$location.$$url}`);
     $location.path('/');
   });

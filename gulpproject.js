@@ -79,6 +79,12 @@ let config = {
         "src": "./node_modules/huoyun-widgets/dist/huoyun.widget.js",
         "target": "/libs/huoyun-widgets/"
       }]
+    },
+    "huoyun-formdata": {
+      "js": [{
+        "src": "./node_modules/huoyun-formdata/dist/huoyun.formdata.min.js",
+        "target": "/libs/huoyun-formdata/"
+      }]
     }
   }
 };

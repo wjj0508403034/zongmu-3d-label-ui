@@ -1,0 +1,46 @@
+<html ng-app="zongmu-3d-label" ng-controller="appController">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- inject:css -->
+  <!-- endinject -->
+  <title>标注系统</title>
+
+</head>
+
+<body class="zongmu-login" ng-controller="LoginController">
+
+  <div class="box login-form-box">
+    <div class="box-header">
+      <a href="/">
+        <h1 class="box-title">欢迎登录标注系统</h1>
+      </a>
+    </div>
+    <div class="box-body">
+      <div class="form-group" has-error="{{vm.email.hasError}}">
+        <input type="text" tabindex="1" ng-model="vm.email.value" class="form-control" id="email" placeholder="邮箱">
+        <span class="help-block" ng-bind="vm.email.errorMessage"></span>
+      </div>
+      <div class="form-group" has-error="{{vm.password.hasError}}">
+        <input type="password" tabindex="2" ng-model="vm.password.value" class="form-control" id="password" placeholder="邮箱">
+        <span class="help-block" ng-bind="vm.password.errorMessage"></span>
+      </div>
+      <div class="form-group forget-password">
+        <a href="/forget-password.html" tabindex="3">忘记密码？</a>
+      </div>
+      <div class="form-group">
+        <div class="btn btn-block btn-info btn-lg" tabindex="4" ng-click="login()">登 录</div>
+      </div>
+      <div class="form-group">
+        <span>没有账号?</span>
+        <span><a href="/register.html" tabindex="5">快速注册</a></span>
+      </div>
+    </div>
+  </div>
+
+</body>
+<!-- inject:js -->
+<!-- endinject -->
+
+</html>
