@@ -16,12 +16,13 @@ angular.module('zongmu-3d-label').factory("ServiceProxy", ["$q",
   }
 ]);
 
-angular.module('zongmu-3d-label').factory("Services", ["VideoAttrService", "ReasonService", "LoginService",
-  function(VideoAttrService, ReasonService, LoginService) {
+angular.module('zongmu-3d-label').factory("Services", ["VideoAttrService", "ReasonService", "LoginService", "UserService",
+  function(VideoAttrService, ReasonService, LoginService, UserService) {
     var Services = {
       VideoAttrService: VideoAttrService,
       ReasonService: ReasonService,
-      LoginService: LoginService
+      LoginService: LoginService,
+      UserService: UserService
     };
 
     return Services;

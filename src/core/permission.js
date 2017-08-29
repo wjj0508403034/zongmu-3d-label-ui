@@ -8,6 +8,10 @@ angular.module('zongmu-3d-label').provider("permission", function() {
     this.user = user;
   };
 
+  this.getUser = function() {
+    return this.user;
+  };
+
   this.cleanUser = function() {
     this.user = null;
   };

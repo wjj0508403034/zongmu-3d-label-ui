@@ -4,6 +4,8 @@
     <div class="btn btn-default" ng-click="onRegisterButtonClicked()">注册</div>
   </div>
   <div ng-if="isLogin()">
-    <div class="btn btn-default" ng-click="onLogoutButtonClicked()">登出</div>
+    <div class="btn btn-default pull-right" ng-click="onLogoutButtonClicked()">登出</div>
+    <div class="pull-right username" ng-bind="getUserName()">
+    </div>
   </div>
 </div>

@@ -101,12 +101,18 @@ angular.module('zongmu-3d-label').config(function($stateProvider, $urlRouterProv
 
 });
 
-angular.module('zongmu-3d-label').controller("appController", ["$scope", "permission", "$state", "httpInterceptor", "HuoYunWidgets",
-  function($scope, permissionProvider, $state, httpInterceptorProvider, HuoYunWidgets) {
+angular.module('zongmu-3d-label').controller("appController", ["$scope", "permission", "$state", "httpInterceptor", "HuoYunWidgets", "Services",
+  function($scope, permissionProvider, $state, httpInterceptorProvider, HuoYunWidgets, Services) {
     httpInterceptorProvider.setDialog(HuoYunWidgets.Dialog);
-    // permissionProvider.setUser({
-    //   businessRole: "Manager"
-    // });
+
+    if (Cookies.get("login")) {
+      Services.UserService.getMyProfile()
+        .then(function(user) {
+          permissionProvider.setUser(user);
+        });
+    } else {
+      permissionProvider.cleanUser();
+    }
 
     $scope.headOptions = {
       title: "3d标注系统",

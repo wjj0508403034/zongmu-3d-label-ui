@@ -70,6 +70,12 @@ let config = {
         "target": "/libs/font-awesome/fonts/",
       }]
     },
+    "js-cookie": {
+      "js": [{
+        "src": "./node_modules/js-cookie/src/js.cookie.js",
+        "target": "/libs/js-cookie/"
+      }]
+    },
     "huoyun-widgets": {
       "css": [{
         "src": "./node_modules/huoyun-widgets/dist/huoyun.widget.css",

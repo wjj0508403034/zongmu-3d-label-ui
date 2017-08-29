@@ -9,6 +9,9 @@ angular.module('zongmu-3d-label').factory("LoginService", ["$http", "ServiceCont
           password: password
         }));
       },
+      logout: function() {
+        return new ServiceProxy($http.post(`${baseUrl}/logout`, {}));
+      },
       register: function(email, password, repeatPassword) {
         return new ServiceProxy($http.post(`${baseUrl}/register`, {
           email: email,
@@ -22,36 +25,10 @@ angular.module('zongmu-3d-label').factory("LoginService", ["$http", "ServiceCont
 
 angular.module('zongmu-3d-label').factory("UserService", ["$http", "ServiceContext", "ServiceProxy",
   function($http, ServiceContext, ServiceProxy) {
-    var baseUrl = `${ServiceContext}/reasons`
+    var baseUrl = `${ServiceContext}/users`
     return {
-      getReasons: function(pageIndex) {
-        var url = `${baseUrl}`;
-        var params = [];
-        if (pageIndex) {
-          params.push(`pageIndex=${pageIndex}`);
-        }
-
-        if (params.length > 0) {
-          url = `${url}?${params.join("&")}`;
-        }
-
-        return new ServiceProxy($http.get(url));
-      },
-
-      getReason: function(id) {
-        return new ServiceProxy($http.get(`${baseUrl}/${id}`));
-      },
-
-      createReason: function(name) {
-        return new ServiceProxy($http.post(baseUrl, name));
-      },
-
-      updateReason: function(id, name) {
-        return new ServiceProxy($http.put(`${baseUrl}/${id}`, name));
-      },
-
-      deleteReason: function(id) {
-        return new ServiceProxy($http.delete(`${baseUrl}/${id}`));
+      getMyProfile: function() {
+        return new ServiceProxy($http.get(`${baseUrl}/me`));
       }
     };
   }
